@@ -15,8 +15,8 @@ module.exports = {
   },
   configureWebpack: {
     devServer: {
-      proxy: {
-        "/api": {
+      proxy: {  
+        "/api": {   //代理服务器：所有 api 开头的 接口都请求到下面的地址去
             target: "http://127.0.0.1:3000/", 
             changOrigin: true
         }

@@ -4,6 +4,7 @@ import us from "./service/user";
 
 Vue.use(Vuex);
 
+// ok
 export default new Vuex.Store({
   state: {
     isLogin: localStorage.getItem('token') ? true : false
@@ -13,7 +14,7 @@ export default new Vuex.Store({
       state.isLogin = b;
     }
   },
-  actions: {
+  actions: {  //这里的代码要尽量保持清爽，因此把接口请求的代码封装成一个文件
     login({ commit }, user) {
       // 登录请求
       return us.login(user).then(res => {

@@ -1,14 +1,22 @@
+
+//ok
 <template>
   <div>
     <div class="logo">
       <img src="https://img.kaikeba.com/logo-new.png" alt>
     </div>
     <!-- <cube-button>登录</cube-button> -->
-    <cube-form :model="model" :schema="schema" @submit="handleLogin" @validate="haneldValidate"></cube-form>
+    <cube-form :model="model" 
+              :schema="schema"
+               @submit="handleLogin"
+                @validate="haneldValidate">
+    </cube-form>
   </div>
 </template>
 
 <script>
+
+//ok
 export default {
   data() {
     return {
@@ -59,12 +67,12 @@ export default {
   },
   methods: {
     handleLogin(e) {
-      // 组织表单默认提交行为
-      e.preventDefault();
+
+      e.preventDefault();    // 阻止表单默认提交行为（跳转或刷新）,why？答：详见：https://blog.csdn.net/fairyier/article/details/80048341
+     
       // 登录请求
-    //   this.login(this.model) // 使用mapActions
       this.$store
-        .dispatch("login", this.model)
+        .dispatch("login", this.model)    //这里可以拿到 action 中 login（）的返回值，因此可以then
         .then(code => {
           if (code) {
             // 登录成功重定向

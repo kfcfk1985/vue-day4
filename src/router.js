@@ -5,9 +5,10 @@ import Login from "./views/Login.vue";
 
 Vue.use(Router);
 
+//ok
 const router = new Router({
   mode: "history",
-  base: process.env.BASE_URL,
+  base: process.env.BASE_URL,   //process.env.BASE_URL =  /
   routes: [
     {
       path: "/",
@@ -34,8 +35,9 @@ const router = new Router({
   ]
 });
 
-// 路由守卫
+//ok 路由守卫
 router.beforeEach((to, from, next) => {
+  console.log("路由全局守卫：before each,本来要到",to)
   if (to.meta.auth) {
     // 需要登录
     const token = localStorage.getItem("token");
@@ -43,8 +45,8 @@ router.beforeEach((to, from, next) => {
       next();
     } else {
       next({
-        path: "/login",
-        query: { redirect: to.path }
+        path: "/login",               //没有登陆，重定向到login页面
+        query: { redirect: to.path }  //带上本来要跳转的参数
       });
     }
   } else { // 不需要登录验证
