@@ -69,7 +69,7 @@ export default {
     handleLogin(e) {
 
       e.preventDefault();    // 阻止表单默认提交行为（跳转或刷新）,why？答：详见：https://blog.csdn.net/fairyier/article/details/80048341
-     
+
       // 登录请求
       this.$store
         .dispatch("login", this.model)    //这里可以拿到 action 中 login（）的返回值，因此可以then

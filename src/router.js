@@ -38,8 +38,7 @@ const router = new Router({
 //ok 路由守卫
 router.beforeEach((to, from, next) => {
   console.log("路由全局守卫：before each,本来要到",to)
-  if (to.meta.auth) {
-    // 需要登录
+  if (to.meta.auth) {     // 需要登录
     const token = localStorage.getItem("token");
     if (token) {
       next();
